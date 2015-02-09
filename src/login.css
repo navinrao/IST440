@@ -1,0 +1,22 @@
+@CHARSET "ISO-8859-1";
+
+.container {
+padding-right: 15px;
+padding-left: 15px;
+margin-right: auto;
+margin-left: auto;
+}
+div{
+	display:block;
+}
+form.form-signin {
+max-width: 330px;
+padding: 15px;
+margin: 0 auto;
+}
+h2{
+	color:#0000CC;
+	font-family: "Times New Roman", Times, serif;
+	font-size:3.5em;
+	font-weight: 1000;
+}
