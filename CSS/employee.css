@@ -1,6 +1,5 @@
 @CHARSET "ISO-8859-1";
 
-
 body {
 
 font-family: Verdana, Arial;
@@ -8,23 +7,29 @@ font-size: 13px;
 color: #000;
 
 }
+
 .container {
 padding-right: 15px;
 padding-left: 15px;
 margin-right: auto;
 margin-left: auto;
 }
+
+h2{
+	
+	margin: 50px auto;
+	color:#0000CC;
+	font-family:  Times, serif,"Times New Roman";
+	font-size:3.5em;
+	font-weight: 1000;
+	
+}
 div{
 	display:block;
 }
-form.form-signin {
-max-width: 330px;
+
+form.form-horizontal- {
+max-width: 730px;
 padding: 15px;
 margin: 0 auto;
-}
-h2{
-	color:#0000CC;
-	font-family: "Times New Roman", Times, serif;
-	font-size:3.5em;
-	font-weight: 1000;
 }
