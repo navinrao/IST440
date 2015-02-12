@@ -15,6 +15,42 @@
 
  <link rel="stylesheet" type="text/css" href="../CSS/timesheet.css" >
 
+<!-- Loads JQuery from Google CDN -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<!-- JavaScript for current Page -->
+<script type="text/javascript">
+
+	$(document).ready(function () {
+		
+	});
+	
+    var addProject = function () {
+        var x = document.getElementById("project").value;
+        if (x == "Project 1") {
+        	document.getElementById("proj1").disabled = true;
+        	getTableHTML(x);
+        }
+        else if (x == "Project 2") {
+        	document.getElementById("proj2").disabled = true;
+        	getTableHTML(x);
+        }
+        else if (x == "Project 3") {
+        	document.getElementById("proj3").disabled = true;
+        	getTableHTML(x);
+        }
+    }
+    <!-- Inserts Hours row for new project -->
+    var getTableHTML = function (name) {
+   		$(".table > tbody:last").append("<tr> <td>" + name + "</td><td><input type='time' id='start'>"
+   	    + "</td><td><input type='time' id='end'></td><td><input type='number' class='mon' disabled></td>"
+   	    + "<td><input type='number' class='mon' disabled></td><td><input type='number' class='mon'  disabled></td>"
+   	    + "<td><input type='number' class='mon'  disabled></td><td><input type='number' class='mon'  disabled>"
+   	    + "</td><td><input type='number' class='mon'  disabled ></td><td><input type='number' class='mon'  disabled>"
+   	    + "</td><td><input type='number' class='mon' disabled></td>");
+    }
+</script>
+
 </head>
 <body>
 <img src="../Images/logo.jpg" alt="logo" style="width:175px;height:125px">
@@ -50,63 +86,57 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-
-<select id ="project" >
-  <option value="">Project</option>
-  <option value="">Code1</option>
-  <option value="">Code2</option>
-  <option value="">Code3</option>
-</select>
-			
-			
-            </td>
-            <td>
-            <input type="time" id="start" >
-            </td>
-            
-             <td>
-            <input type="time" id="end" >
-            </td>
-            
-             <td>
-            <input type="number" class="mon" disabled >
-            </td>
-            
-             <td>
-            <input type="number" class="mon" disabled >
-            </td>
-            
-            
-            <td>
-            <input type="number" class="mon"  disabled >
-            </td>
-            
-            <td>
-            <input type="number" class="mon"  disabled  >
-            </td>
-            
-            
-            <td>
-            <input type="number" class="mon"  disabled >
-            </td>
-            
-            <td>
-            <input type="number" class="mon"  disabled  >
-            </td>
-            
-            <td>
-            <input type="number" class="mon"  disabled  >
-            </td>
-            
-             <td>
-            <input type="number" class="mon" disabled >
-            </td>
-            
-          </tr>
-   
+        	<tr></tr>
         </tbody>
+        <tfoot>
+	    	<td>
+				<select id ="project" onchange="addProject()">
+				  <option value="">Project</option>
+				  <option id="proj1" value="Project 1">Project 1</option>
+				  <option id="proj2" value="Project 2">Project 2</option>
+				  <option id="proj3" value="Project 3">Project 3</option>
+				</select>
+            </td>
+            <td>
+	            <input type="time" id="start" >
+            </td>
+            
+            <td>
+	            <input type="time" id="end" >
+            </td>
+            
+            <td>
+	            <input type="number" class="mon" disabled >
+            </td>
+            
+            <td>
+	            <input type="number" class="mon" disabled >
+            </td>
+            
+            <td>
+	            <input type="number" class="mon"  disabled >
+            </td>
+            
+            <td>
+	            <input type="number" class="mon"  disabled  >
+            </td>
+            
+            <td>
+	            <input type="number" class="mon"  disabled >
+            </td>
+            
+            <td>
+	            <input type="number" class="mon"  disabled  >
+            </td>
+            
+            <td>
+	            <input type="number" class="mon"  disabled  >
+            </td>
+            
+             <td>
+	            <input type="number" class="mon" disabled >
+            </td>
+        </tfoot>
       </table>
       </div>
       
