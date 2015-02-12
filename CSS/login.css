@@ -3,8 +3,8 @@
 
 body {
 
-font-family: Verdana, Arial;
-font-size: 13px;
+font-family: Verdana, Arial, Tahoma;
+font-size: 1.5em;
 color: #000;
 
 }
@@ -17,14 +17,14 @@ margin-left: auto;
 div{
 	display:block;
 }
-form.form-signin {
+form.form-signin{
 max-width: 330px;
 padding: 15px;
 margin: 0 auto;
 }
 h2{
 	color:#0000CC;
-	font-family: "Times New Roman", Times, serif;
+	font-family: serif, times, "New Times Roman";
 	font-size:3.5em;
 	font-weight: 1000;
 }

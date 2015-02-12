@@ -2,6 +2,7 @@
 <html>
 <head>
 
+
 <title>New Employee</title>
  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,11 +17,18 @@
 
 </head>
 <body>
-
-<div class="container">
 <img src="../Images/logo.jpg" alt="logo" style="width:175px;height:125px">
 
-  <h2>New Employee</h2>
+
+<div class="container">
+
+	<div class="panel panel-info">
+ 	 <div class="panel-heading"><h4>Add Employee</h4></div>
+  	</div>
+
+  <div class="jumbotron">
+  
+  
   <form class="form-horizontal" role="form" >
     <div class="form-group">
       <label class="control-label col-sm-2" for="empid">EmpID:</label>
@@ -39,6 +47,7 @@
       <label class="control-label col-sm-2" for="lname">Last Name:</label>
       <div class="col-sm-5">          
         <input type="text" class="form-control" id="lname" placeholder="Last Name">
+      
       </div>
     </div>
   
@@ -125,15 +134,21 @@
   <!-- Button submit -->
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </div>
   </form>
   
-  <div class="footer">
+  </div> <!-- jumbotron -->
+  
+  
+    <div class="panel panel-primary">
 		<p>IST 440 Group 1 Spring 2015 </p>
 		</div>
+  
 </div>
+
+
 
 
 

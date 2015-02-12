@@ -2,15 +2,15 @@
 
 body {
 
-font-family: Verdana, Arial;
-font-size: 13px;
+font-family: Verdana, Arial, Tahoma;
+font-size: 1.5em;
 color: #000;
-
+	
 }
 
 .container {
-padding-right: 15px;
-padding-left: 15px;
+padding-right: 50px;
+padding-left: 50px;
 margin-right: auto;
 margin-left: auto;
 }
@@ -19,7 +19,7 @@ h2{
 	
 	margin: 50px auto;
 	color:#0000CC;
-	font-family:  Times, serif,"Times New Roman";
+	font-family:  serif,"Times New Roman", Times;
 	font-size:3.5em;
 	font-weight: 1000;
 	
