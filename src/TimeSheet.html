@@ -21,10 +21,44 @@
 <!-- JavaScript for current Page -->
 <script type="text/javascript">
 
-	$(document).ready(function () {
-		
+    $(document).ready(function () {
+        // Populates dates below days on document load
+	    (function populateDates() {
+	        var today = new Date();
+	        var dayOfTheWeek = today.getDay();     // Gets day of the week
+	        var currentMonth = today.getMonth() + 1;
+	        var bool = false;   // becomes true after current date is set
+	        var counter = 1;    // counts the number of days after current date
+
+            // Iterates through all date class elements to find current day of the week
+	        $('.date').each(function (index) {
+
+                // populates the days after the current day
+	            if (bool) {
+	                var daysAfterToday = today.getDate() + counter;
+	                this.value = currentMonth + "/" + daysAfterToday;
+	                daysAfterToday++;
+	            }
+                // populates the current date only
+	            if ($(this).prop('id') == dayOfTheWeek) {
+	                this.value = (currentMonth + "/" + today.getDate());
+	                bool = true;
+	            }
+	        });
+
+	        var dayCounter = dayOfTheWeek;
+
+            // populates days before current date
+	        $('.date').each(function (index) {
+	            if ($(this).prop('id') > dayOfTheWeek)
+	                return false;
+	            var iterationDate = today.getDate() - dayCounter;
+	            this.innerHTML = (currentMonth + "/" + iterationDate);
+	            dayCounter--;
+	        });
+	    }) ();
 	});
-	
+	// Function adds projects and corresponding rows to the timesheet
     var addProject = function () {
         var x = document.getElementById("project").value;
         if (x == "Project 1") {
@@ -40,7 +74,7 @@
         	getTableHTML(x);
         }
     }
-    <!-- Inserts Hours row for new project -->
+    //<!-- Inserts Hours row for new project -->
     var getTableHTML = function (name) {
    		$(".table > tbody:last").append("<tr> <td>" + name + "</td><td><input type='time' id='start'>"
    	    + "</td><td><input type='time' id='end'></td><td><input type='number' class='mon' disabled></td>"
@@ -49,6 +83,8 @@
    	    + "</td><td><input type='number' class='mon'  disabled ></td><td><input type='number' class='mon'  disabled>"
    	    + "</td><td><input type='number' class='mon' disabled></td>");
     }
+    
+
 </script>
 
 </head>
@@ -84,6 +120,21 @@
             <th>Sat</th>
             <th>TOTAL</th>
           </tr>
+		  <tr>
+			<th></th>
+			<th></th>
+			<th></th>
+			<!--Holds the current dates. ID and class are used in JQuery-->
+			<th id="0" class="date"></th>
+			<th id="1" class="date"></th>
+            <th id="2" class="date"></th>
+            <th id="3" class="date"></th>
+            <th id="4" class="date"></th>
+            <th id="5" class="date"></th>
+            <th id="6" class="date"></th>
+
+
+		  </tr>
         </thead>
         <tbody>
         	<tr></tr>
