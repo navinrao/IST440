@@ -32,3 +32,7 @@ h2{
 .date {
     font-weight : normal;
 }
+.timepicker {
+    width : 100px;
+    font-size : medium;
+}
