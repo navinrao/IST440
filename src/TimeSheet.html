@@ -28,55 +28,41 @@
     $(document).ready(function () {
         // Populates dates below days on document load
         (function populateDates() {
-            var today = new Date();
-            var dayOfTheWeek = today.getDay();     // Gets day of the week
-            var currentMonth = today.getMonth() + 1;
-            var bool = false;   // becomes true after current date is set
-            var counter = 1;    // counts the number of days after current date
+            var today = new Date();     // holds the current date
+            var dayOfTheWeek = today.getDay();  // holds the day of the week (from 0-6)
+            var miliSeconds = today.getTime();  // holds the number of milliseconds from 1970 to now
 
             // Iterates through all date class elements to find current day of the week
             $('.date').each(function (index) {
 
-                // populates the days after the current day
-                if (bool) {
-                    var daysAfterToday = today.getDate() + counter;
-                    this.value = (currentMonth + "/" + daysAfterToday);
-                    daysAfterToday++;
-                }
-                // populates the current date only
-                if ($(this).prop('id') == dayOfTheWeek) {
-                    this.value = (currentMonth + "/" + today.getDate());
-                    bool = true;
-                }
-            });
-
-            var dayCounter = dayOfTheWeek;
-
-            // populates days before current date
-            $('.date').each(function (index) {
-                if ($(this).prop('id') > dayOfTheWeek)
-                    return false;
-                var iterationDate = today.getDate() - dayCounter;
-                this.innerHTML = (currentMonth + "/" + iterationDate);
-                dayCounter--;
+                // date holds number of milliseconds from 1970 to this Sunday (beginning of the week)
+                var date = new Date(miliSeconds - (dayOfTheWeek * 24 * 60 * 60 * 1000));
+                var month = date.getMonth() + 1;    // Holds month, 0-indexed
+                var dayOfMonth = date.getDate();    // holds date (ex: 17)
+                this.innerHTML = (month + "/" + dayOfMonth);    // inserts date into HTML in table
+                miliSeconds += 24 * 60 * 60 * 1000;             // adds one day to milliseconds to get next date
             });
         })();
-        var date = new Date();
         
         //JQuery sets up start and end time boxes
-        $('#timepicker-start').timepicker({ minTime: '6:00am', interval: 15 });
+        $('#timepicker-start').timepicker({
+            minTime: '6:00am', interval: 15 });
 
-        $('#timepicker-end').timepicker({ minTime: '6:00am', interval: 15, onchange : function () { alert("T");} });
+        $('#timepicker-end').timepicker({ minTime: '6:00am', interval: 15, onChange : function () { alert("T");} });
 
         //$('#timepicker-end').timepicker({ minTime: '6:00am', interval: 15 }).change(function () { alert("CHANGED1");});
 
-        $('#timepicker-end').on(changeTime, function () {
-            alert("CHANGED");
-        });
+        //$('#timepicker-end').on(changeTime, function () {
+        //    alert("CHANGED");
+        //});
 
-        $('#timepicker-start').change(function () {
-            alert("CHANGED");
+        //$('#timepicker-start').change(function () {
+        //    alert("CHANGED");
+        //});
+        $('#timepicker-end').click(function () {
+            alert("clicked");
         });
+        
     });;
 	// Function adds projects and corresponding rows to the timesheet
     var addProject = function () {
@@ -94,7 +80,7 @@
         	getTableHTML(x);
         }
     }
-    //<!-- Inserts Hours row for new project -->
+    //<!-- Inserts a new row for new project -->
     var getTableHTML = function (name) {
    		$(".table > tbody:last").append("<tr> <td>" + name + "</td><td><input type='time' id='start'>"
    	    + "</td><td><input type='time' id='end'></td><td><input type='number' class='mon' disabled></td>"
