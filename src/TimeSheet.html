@@ -18,13 +18,53 @@
 <!-- Loads JQuery from Google CDN -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-<!-- JavaScript for current Page -->
+    <!--Used for JQuery Timepicker-->
+<script type="text/javascript" src="../plugins/jquery.timepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="../plugins/jquery.timepicker.css">
+    
+    <!-- JavaScript for current Page -->
 <script type="text/javascript">
 
-	$(document).ready(function () {
-		
-	});
-	
+    $(document).ready(function () {
+        // Populates dates below days on document load
+        (function populateDates() {
+            var today = new Date();     // holds the current date
+            var dayOfTheWeek = today.getDay();  // holds the day of the week (from 0-6)
+            var miliSeconds = today.getTime();  // holds the number of milliseconds from 1970 to now
+
+            // Iterates through all date class elements to find current day of the week
+            $('.date').each(function (index) {
+
+                // date holds number of milliseconds from 1970 to this Sunday (beginning of the week)
+                var date = new Date(miliSeconds - (dayOfTheWeek * 24 * 60 * 60 * 1000));
+                var month = date.getMonth() + 1;    // Holds month, 0-indexed
+                var dayOfMonth = date.getDate();    // holds date (ex: 17)
+                this.innerHTML = (month + "/" + dayOfMonth);    // inserts date into HTML in table
+                miliSeconds += 24 * 60 * 60 * 1000;             // adds one day to milliseconds to get next date
+            });
+        })();
+        
+        //JQuery sets up start and end time boxes
+        $('#timepicker-start').timepicker({
+            minTime: '6:00am', interval: 15 });
+
+        $('#timepicker-end').timepicker({ minTime: '6:00am', interval: 15, onChange : function () { alert("T");} });
+
+        //$('#timepicker-end').timepicker({ minTime: '6:00am', interval: 15 }).change(function () { alert("CHANGED1");});
+
+        //$('#timepicker-end').on(changeTime, function () {
+        //    alert("CHANGED");
+        //});
+
+        //$('#timepicker-start').change(function () {
+        //    alert("CHANGED");
+        //});
+        $('#timepicker-end').click(function () {
+            alert("clicked");
+        });
+        
+    });;
+	// Function adds projects and corresponding rows to the timesheet
     var addProject = function () {
         var x = document.getElementById("project").value;
         if (x == "Project 1") {
@@ -40,7 +80,7 @@
         	getTableHTML(x);
         }
     }
-    <!-- Inserts Hours row for new project -->
+    //<!-- Inserts a new row for new project -->
     var getTableHTML = function (name) {
    		$(".table > tbody:last").append("<tr> <td>" + name + "</td><td><input type='time' id='start'>"
    	    + "</td><td><input type='time' id='end'></td><td><input type='number' class='mon' disabled></td>"
@@ -49,7 +89,10 @@
    	    + "</td><td><input type='number' class='mon'  disabled ></td><td><input type='number' class='mon'  disabled>"
    	    + "</td><td><input type='number' class='mon' disabled></td>");
     }
-</script>
+    var printTest = function () {
+        alert("testing method");
+    }
+    </script>
 
 </head>
 <body>
@@ -84,6 +127,19 @@
             <th>Sat</th>
             <th>TOTAL</th>
           </tr>
+		  <tr>
+			<th></th>
+			<th></th>
+			<th></th>
+			<!--Holds the current dates. ID and class are used in JQuery-->
+			<th id="0" class="date"></th>
+			<th id="1" class="date"></th>
+            <th id="2" class="date"></th>
+            <th id="3" class="date"></th>
+            <th id="4" class="date"></th>
+            <th id="5" class="date"></th>
+            <th id="6" class="date"></th>
+		  </tr>
         </thead>
         <tbody>
         	<tr></tr>
@@ -98,11 +154,11 @@
 				</select>
             </td>
             <td>
-	            <input type="time" id="start" >
+	            <input id="timepicker-start" class="timepicker">
             </td>
             
             <td>
-	            <input type="time" id="end" >
+	            <input id="timepicker-end" class="timepicker">
             </td>
             
             <td>

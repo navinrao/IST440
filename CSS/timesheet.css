@@ -29,3 +29,10 @@ h2{
 	text-align:center;
 	padding:10px;
 }
+.date {
+    font-weight : normal;
+}
+.timepicker {
+    width : 100px;
+    font-size : medium;
+}
