@@ -12,6 +12,18 @@ padding-left: 15px;
 margin-right: auto;
 margin-left: auto;
 }
+#save, #submit{
+	display:inline-block;
+	font-size: 1em;
+	height: 2.5em;
+	width: 5.5em;
+	padding: .5em;
+	margin:auto;
+	align:middle;
+
+	
+
+}
 #project{
 	size="1";
 	height: 40px; 
@@ -19,7 +31,7 @@ margin-left: auto;
 }
 .Sun, .Mon, .Tues, .Wed, .Thurs, .Fri, .Sat, .total{
 	height: 40px; 
-	width: 65px;
+	width: 50px;
 	background-color: white;
 }
 h2{
