@@ -19,7 +19,7 @@ margin-left: auto;
 }
 .Sun, .Mon, .Tues, .Wed, .Thurs, .Fri, .Sat, .total{
 	height: 40px; 
-	width: 50px;
+	width: 65px;
 	background-color: white;
 }
 h2{
